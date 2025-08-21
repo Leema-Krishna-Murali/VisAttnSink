@@ -39,29 +39,15 @@ from transformers.integrations.fsdp import is_fsdp_managed_module
 from transformers.modeling_outputs import CausalLMOutputWithPast, Seq2SeqLMOutput
 from transformers.pytorch_utils import isin_mps_friendly
 from transformers.tokenization_utils import ExtensionsTrie
-try:
-    from transformers.utils import (
-        ModelOutput,
-        is_accelerate_available,
-        is_hqq_available,
-        is_optimum_quanto_available,
-        is_quanto_available,
-        is_torchdynamo_compiling,
-        logging,
-    )
-except ImportError:
-    from transformers.utils import (
-        ModelOutput,
-        is_accelerate_available,
-        is_torchdynamo_compiling,
-        logging,
-    )
-    def is_hqq_available():
-        return False
-    def is_optimum_quanto_available():
-        return False
-    def is_quanto_available():
-        return False
+from transformers.utils import (
+    ModelOutput,
+    is_accelerate_available,
+    is_hqq_available,
+    is_optimum_quanto_available,
+    is_quanto_available,
+    is_torchdynamo_compiling,
+    logging,
+)
 from transformers.generation.beam_constraints import DisjunctiveConstraint, PhrasalConstraint
 from transformers.generation.beam_search import BeamScorer, BeamSearchScorer, ConstrainedBeamSearchScorer
 from transformers.generation.candidate_generator import (
